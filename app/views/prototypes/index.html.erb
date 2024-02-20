@@ -1,0 +1,21 @@
+<main class="main">
+  <div class="inner">
+    <% if user_signed_in?  %>
+      <div class="greeting">
+        <%="こんにちは," %>
+        <%= link_to "#{current_user.user_name}さん", user_path(current_user.id),class: :greeting__link%>
+      </div >
+    <%end%> 
+
+    <%# // ログインしているときは上記を表示する %>
+    <div class="card__wrapper">
+     <% if user_signed_in? && current_user.id == @prototype%>
+          <%= link_to "編集する", prototype_path, class: :prototype__btn %>
+          <%= link_to "削除する",  prototype_path(@prototype.id), data: { turbo_method: :delete },class: :prototype__btn %>
+      <% end %>
+
+      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+    <%= render partial: 'prototype', collection: @prototype %>
+    </div>
+  </div>
+</main>
