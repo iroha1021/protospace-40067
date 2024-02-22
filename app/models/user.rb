@@ -9,7 +9,7 @@ class User < ApplicationRecord
          validates :profile, presence: true
          validates :post, presence: true
          validates :affilication, presence: true
-         has_many :prototypes
+         has_many :prototypes,dependent: :destroy
          has_many :comments, dependent: :destroy
 
 end

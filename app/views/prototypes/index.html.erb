@@ -11,7 +11,7 @@
     <div class="card__wrapper">
      <% if user_signed_in? && current_user.id == @prototype%>
           <%= link_to "編集する", prototype_path, class: :prototype__btn %>
-          <%= link_to "削除する",  prototype_path(@prototype.id), data: { turbo_method: :delete },class: :prototype__btn %>
+          <%= link_to "削除する",  prototype_path(@user.id), data: { turbo_method: :delete },class: :prototype__btn %>
       <% end %>
 
       <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
